@@ -1,0 +1,3 @@
+[submodule "qoijs"]
+	path = qoijs
+	url = https://github.com/kchapelier/qoijs

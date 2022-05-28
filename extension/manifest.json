@@ -13,6 +13,7 @@
 				"*://*/*", "file://*/*"
 			],
 			"js": [
+				"qoijs.min.js",
 				"main.js"
 			],
 			"run_at": "document_end"
