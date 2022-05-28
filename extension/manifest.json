@@ -1,12 +1,12 @@
 {
 	"manifest_version": 2,
+	"version": "1.0",
 	"name": "qoiJS embed",
 	"short_name": "qoiJS",
 	"description": "Embeds QOI images via qoiJS",
 	"author": "FrostBird347",
 	"homepage_url": "https://github.com/FrostBird347/qoiJS-embed/",
 	"permissions": ["activeTab", "*://*/*"],
-	"version": "1.0",
 	"content_scripts": [
 		{
 			"matches": [

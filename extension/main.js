@@ -111,8 +111,6 @@ function CheckForQOI() {
 			}
 		}
 		
-		// Don't always check for background images
-		i += Math.round(Math.random() * 0.7);
 	}
 }
 
