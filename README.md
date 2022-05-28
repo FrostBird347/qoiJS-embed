@@ -10,4 +10,4 @@ A chrome extension that adds 'support' for the qoi format by using [kchapelier/q
 
 
 
-![Test](https://raw.githubusercontent.com/kchapelier/qoijs/1796db56e18bfe6787b92f0b696bc0aa9e9b4566/test-images/kodim23.png)
+![Test](https://raw.githubusercontent.com/kchapelier/qoijs/1796db56e18bfe6787b92f0b696bc0aa9e9b4566/test-images/kodim23.qoi)
