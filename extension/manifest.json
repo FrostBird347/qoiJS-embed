@@ -6,7 +6,7 @@
 	"author": "FrostBird347",
 	"homepage_url": "https://github.com/FrostBird347/qoiJS-embed/",
 	"permissions": ["activeTab", "*://*/*"],
-	"version": "0.1",
+	"version": "1.0",
 	"content_scripts": [
 		{
 			"matches": [
