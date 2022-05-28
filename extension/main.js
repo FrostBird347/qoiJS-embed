@@ -50,8 +50,8 @@ function ConvertQoiToPng(buffer, MainElement, EmbedType) {
 		
 		TempCanvasCTX.putImageData(TempImageData, 0, 0);
 		
-		// Don't check again
-		MainElement.dataset.LoadAttempts = 1000;
+		// Reset fail count incase image url is changed later
+		MainElement.dataset.LoadAttempts = 0;
 		switch(EmbedType) {
 			// Regular images
 			case 0:
@@ -60,6 +60,10 @@ function ConvertQoiToPng(buffer, MainElement, EmbedType) {
 			// Background images
 			case 1:
 				MainElement.style.backgroundImage = "url('" + TempCanvas.toDataURL() + "')";
+				break;
+			// favicons
+			case 2:
+				MainElement.href = TempCanvas.toDataURL();
 				break;
 			default:
 				console.warn("Unknown EmbedType '" + EmbedType + "', skipping!");
@@ -71,7 +75,7 @@ function ConvertQoiToPng(buffer, MainElement, EmbedType) {
 }
 
 function CheckForQOI() {
-	var AllImages = [document.getElementsByTagName('img'), getBgImgs(document)];
+	var AllImages = [document.getElementsByTagName('img'), getBgImgs(document), document.querySelectorAll("link[rel*='icon']")];
 	for (var ii = 0; ii < AllImages.length; ii++) {
 		var NormalImages = AllImages[ii]
 		
@@ -91,6 +95,14 @@ function CheckForQOI() {
 						CurrentSRC = ""
 					}
 					break;
+				// favicons
+				case 2:
+					try {
+						CurrentSRC = NormalImages[i].href;
+					} catch {
+						CurrentSRC = ""
+					}
+					break;
 				default:
 					console.warn("Unknown EmbedType '" + ii + "', skipping!");
 					return;
@@ -100,7 +112,7 @@ function CheckForQOI() {
 				
 				if (NormalImages[i].dataset.LoadAttempts == null) {
 					NormalImages[i].dataset.LoadAttempts = 0;
-				} else if (NormalImages[i].dataset.LoadAttempts < 5 && CurrentSRC.split("?")[0].split(".")[CurrentSRC.split("?")[0].split(".").length - 1].toLowerCase() == "qoi") {
+				} else if (NormalImages[i].dataset.LoadAttempts < 5 && !CurrentSRC.startsWith("data:") && CurrentSRC.split("?")[0].split(".")[CurrentSRC.split("?")[0].split(".").length - 1].toLowerCase() == "qoi") {
 					NormalImages[i].dataset.LoadAttempts++;
 					StartQoiToPng(CurrentSRC, NormalImages[i], ii);
 				}

@@ -1,6 +1,6 @@
 # qoiJS embed
 
-A chrome extension that adds 'support' for the qoi format by using [kchapelier/qoijs](https://github.com/kchapelier/qoijs)
+A simple chrome extension that adds 'support' for the qoi format by using [kchapelier/qoijs](https://github.com/kchapelier/qoijs)
 
 ### Important Notes:
 
