@@ -29,14 +29,9 @@ jobs:
         run: |
           unlink  ./extension/qoijs.min.js
           curl "https://raw.githubusercontent.com/kchapelier/qoijs/1796db56e18bfe6787b92f0b696bc0aa9e9b4566/build/qoijs.min.js" > ./extension/qoijs.min.js
-          
-      - name: Create tar
-        run: |
-          tar -cyf extension.tar.bz2 ./extension
-          
       
       - uses: actions/upload-artifact@v3
         with:
           name: extension
-          path: extension.tar.bz2
+          path: extension/
           
